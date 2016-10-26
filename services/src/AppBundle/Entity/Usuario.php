@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @ORM\Table(name="usuario")
  */
 class Usuario{
@@ -38,7 +38,7 @@ class Usuario{
 
 	 /**
     * @ORM\ManyToOne(targetEntity="Rol")
-    * @ORM\JoinColumn(name="rolId", referencedColumnName="idRol", nullable=false)
+    * @ORM\JoinColumn(name="rolId", referencedColumnName="idRol")
     */
 	 private $rol;
 
@@ -170,7 +170,7 @@ class Usuario{
      *
      * @return Usuario
      */
-    public function setRol(\AppBundle\Entity\Rol $rol)
+    public function setRol(\AppBundle\Entity\Rol $rol = null)
     {
         $this->rol = $rol;
 
