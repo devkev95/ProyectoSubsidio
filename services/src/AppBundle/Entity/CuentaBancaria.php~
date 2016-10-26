@@ -1,0 +1,28 @@
+<?php
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cuentaBancaria")
+ */
+class CuentaBancaria
+{
+	/**
+	* @ORM\Column(type="string", length=25, name="numCuenta")
+	* @ORM\Id
+	*/
+	private $numCuenta;
+
+	/**
+	* @ORM\Column(type="string", length=50, name="nombreBanco")
+	*/
+	private $nombreBanco;
+
+	/**
+	* @ORM\Column(type="float", name="montoActual")
+	*/
+	private $montoActual;
+}
+?>

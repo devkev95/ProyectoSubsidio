@@ -1,0 +1,49 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="proveedor")
+ */
+class Proveedor
+{
+	/**
+	* @ORM\Column(type="string", length=15, name="numRegistro")
+	* @ORM\Id
+	*/
+	private $numRegistro;
+
+	/**
+	* @ORM\Column(type="text", length=350, name="direccion")
+	*/
+	private $direccion;
+
+	/**
+	* @ORM\Column(type="string", name="telefono", length=12)
+	*/
+	private $telefono;
+
+	/**
+	* @ORM\Column(type="string", name="correContacto", length=75)
+	*/
+	private $correContacto;
+
+	/**
+	* @ORM\Column(type="boolean", name="activo")
+	*/
+	private $estado;
+
+	/**
+	* @ORM\ManyToMany(targetEntity="CuentaBancaria")
+     * @ORM\JoinTable(name="cuentasProveedor",
+     *      joinColumns={@ORM\JoinColumn(name="numProveedor", referencedColumnName="numRegistro")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="cuenta", referencedColumnName="numCuenta")}
+     *      )
+	*/
+	private $cuentas;
+
+}
+?>
