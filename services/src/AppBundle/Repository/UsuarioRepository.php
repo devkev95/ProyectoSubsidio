@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class UsuarioRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function verTodosUsuarios(){
+		$dql = "SELECT p from AppBundle:Usuario p";
+		$query = $this->getEntityManager()->createQuery($dql);
+		return $query->getResult();
+	}
+
+
 }

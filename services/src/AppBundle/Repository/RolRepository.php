@@ -10,4 +10,9 @@ namespace AppBundle\Repository;
  */
 class RolRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function verTodosRol(){
+		$dql = "SELECT r from AppBundle:Rol r";
+		$query = $this->getEntityManager()->createQuery($dql);
+		return $query->getResult();
+	}
 }
