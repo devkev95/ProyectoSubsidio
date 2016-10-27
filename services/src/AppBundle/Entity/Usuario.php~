@@ -43,6 +43,7 @@ class Usuario{
 	 private $rol;
 
 
+
     /**
      * Set email
      *

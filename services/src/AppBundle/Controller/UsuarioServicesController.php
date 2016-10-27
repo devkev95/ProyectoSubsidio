@@ -29,18 +29,43 @@ class UsuarioServicesController extends FOSRestController{
 
 
 	/**
-	* @Rest\Get("/proveedor/{numRegistro}")
-	
+	* @Rest\Get("/usuario/{email}")
+	*/
 
  
-	public function idAction($numRegistro){
+	public function idAction($email){
 
-   		$singleresult = $this->getDoctrine()->getRepository("AppBundle:Proveedor")->find($numRegistro);
+   		$singleresult = $this->getDoctrine()->getRepository("AppBundle:Usuario")->usuarioId($email);
    		if ($singleresult == null) {
-   			return new View("No existe ese proveedor", Response::HTTP_NOT_FOUND);
+   			return new View("No existe ese usario", Response::HTTP_NOT_FOUND);
   		 }	
  		return $singleresult;
- }*/
+ 	}
+
+ 	/**
+	* @Rest\Get("/usuario/{email},{password},{nombre},{apellidos},{estado},{rol}/")
+	*/
+
+ public function createAction($email, $password, $nombre, $apellidos, $estado, $rol)
+{
+    $product = new Usuario();
+    $product->setEmail($email);
+    $product->setPassword($password);
+    $product->setNombre($nombre);
+    $product->setApellidos($apellidos);
+    $product->setEstado($estado);
+    $rol1 = new Rol();
+    $rol1 ->setNombre($rol);
+    $product->setRol($rol1 -> getId());
+
+
+    $em = $this->getDoctrine()->getManager();
+    $em->persist($product);
+    $em->flush();
+
+    return new Response('Se creo el Usuario con Email: '.$product->getEmail());
+}
+
 
 
 
