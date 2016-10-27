@@ -27,9 +27,9 @@ class Proveedor
 	private $telefono;
 
 	/**
-	* @ORM\Column(type="string", name="correContacto", length=75)
+	* @ORM\Column(type="string", name="correoContacto", length=75)
 	*/
-	private $correContacto;
+	private $correoContacto;
 
 	/**
 	* @ORM\Column(type="boolean", name="activo")
@@ -126,27 +126,27 @@ class Proveedor
     }
 
     /**
-     * Set correContacto
+     * Set correoContacto
      *
-     * @param string $correContacto
+     * @param string $correoContacto
      *
      * @return Proveedor
      */
-    public function setCorreContacto($correContacto)
+    public function setCorreoContacto($correoContacto)
     {
-        $this->correContacto = $correContacto;
+        $this->correoContacto = $correoContacto;
 
         return $this;
     }
 
     /**
-     * Get correContacto
+     * Get correoContacto
      *
      * @return string
      */
-    public function getCorreContacto()
+    public function getCorreoContacto()
     {
-        return $this->correContacto;
+        return $this->correoContacto;
     }
 
     /**

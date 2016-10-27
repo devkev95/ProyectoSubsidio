@@ -21,7 +21,7 @@ class ProveedorServicesController extends FOSRestController{
 	public function getAction(){
 		$resultset = $this->getDoctrine()->getRepository("AppBundle:Proveedor")->verTodos();
 		if ($resultset == null) {
-          return new View("No hay proveedores", Response::HTTP_NOT_FOUND);
+          return new View("No hay proveedores registrados en el sistema", Response::HTTP_NOT_FOUND);
      }
         return $resultset;
 	}
@@ -30,16 +30,35 @@ class ProveedorServicesController extends FOSRestController{
 	/**
 	* @Rest\Get("/proveedor/{numRegistro}")
 	*/
-
- 
 	public function idAction($numRegistro){
-
-   		$singleresult = $this->getDoctrine()->getRepository("AppBundle:Proveedor")->find($numRegistro);
+		$singleresult = $this->getDoctrine()->getRepository("AppBundle:Proveedor")->find($numRegistro);
    		if ($singleresult == null) {
    			return new View("No existe ese proveedor", Response::HTTP_NOT_FOUND);
   		 }	
  		return $singleresult;
- }
+ 	}
+
+ 	/**
+ 	* @Rest\Post("/proveedor")
+ 	*/
+ 	public function postAction(Request $request){
+ 		$em = $this->getDoctrine()->getManager();
+ 		$proveedor = new Proveedor;
+ 		$data = json_decode($request->getContent(), true);
+ 		$proveedor->setNumRegistro($data["numRegistro"]);
+ 		$proveedor->setDireccion($data["direccion"]);
+ 		$proveedor->setTelefono($data["telefono"]);
+ 		$proveedor->setCorreoContacto($data["correoContacto"]);
+ 		$proveedor->setEstado($data["estado"]);
+ 		$cuentas = $em->getRepository("AppBundle:CuentaBancaria")->getCuentas($data["cuentas"]);
+ 		foreach ($cuentas as $cuenta) {
+ 			$proveedor->addCuenta($cuenta);
+ 		}
+ 		
+ 		$em->persist($proveedor);
+ 		$em->flush();
+
+ 	}
 
 
 

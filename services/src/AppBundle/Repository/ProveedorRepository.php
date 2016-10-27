@@ -24,5 +24,4 @@ class ProveedorRepository extends \Doctrine\ORM\EntityRepository
 		return $query->getResult();
 	}
 
-
 }
