@@ -37,7 +37,7 @@ class Usuario{
 	private $estado;
 
 	 /**
-    * @ORM\ManyToOne(targetEntity="Rol")
+    * @ORM\ManyToOne(targetEntity="Rol", inversedBy="usuarios")
     * @ORM\JoinColumn(name="rolId", referencedColumnName="idRol")
     */
 	 private $rol;

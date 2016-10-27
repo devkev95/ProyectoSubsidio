@@ -22,6 +22,21 @@ class Rol
 	*/
 	private $nombre;
 
+  /**
+   * @ORM\OneToMany(targetEntity="Usuario", mappedBy="rol")
+   **/
+
+    private $Usuarios;
+
+  /**
+   * Constructor
+   */
+  public function __construct()
+  {
+      $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
+  }  
+
+
     /**
      * Get id
      *
@@ -30,6 +45,20 @@ class Rol
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Set id
+     *
+     * @param smallint $id
+     *
+     * @return Rol
+     */
+    public function setId()
+    {
+        return $this->id= $id;
+
+        return $this;
     }
 
     /**
