@@ -25,5 +25,23 @@ class ProveedorServicesController extends FOSRestController{
      }
         return $resultset;
 	}
+
+
+	/**
+	* @Rest\Get("/proveedor/{numRegistro}")
+	*/
+
+ 
+	public function idAction($numRegistro){
+
+   		$singleresult = $this->getDoctrine()->getRepository("AppBundle:Proveedor")->find($numRegistro);
+   		if ($singleresult == null) {
+   			return new View("No existe ese proveedor", Response::HTTP_NOT_FOUND);
+  		 }	
+ 		return $singleresult;
+ }
+
+
+
 }
 ?>
