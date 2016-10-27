@@ -22,6 +22,8 @@ class Rol
 	*/
 	private $nombre;
 
+
+
     /**
      * Get id
      *

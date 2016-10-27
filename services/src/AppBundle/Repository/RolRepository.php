@@ -15,4 +15,12 @@ class RolRepository extends \Doctrine\ORM\EntityRepository
 		$query = $this->getEntityManager()->createQuery($dql);
 		return $query->getResult();
 	}
+
+	public function getRoles($ids)
+	{
+		$dql = "SELECT c FROM AppBundle:Rol c WHERE c.idRol IN(:ids)";
+		$query = $this->getEntityManager()->createQuery($dql);
+		$query->setParameter("ids", $ids);
+		return $query->getResult();
+	}
 }

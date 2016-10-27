@@ -42,7 +42,13 @@ class Usuario{
     */
 	 private $rol;
 
-
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Set email

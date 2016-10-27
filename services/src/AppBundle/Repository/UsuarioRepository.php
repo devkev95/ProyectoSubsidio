@@ -23,20 +23,4 @@ class UsuarioRepository extends \Doctrine\ORM\EntityRepository
 		return $query->getResult();
 	}
 
-	public function usuarioCrear($email, $password, $nombre, $apellidos, $estado, $rol){
-		$dql = "INSERT  INTO AppBundle:Usuario p (email, password, nombres, apellidos, activo, rolId) VALUES (p.email=?1, p.password=?2, p.nombre=?3, p.apellidos=?4, p.estado=?5, p.rol=?6)";
-		$query = $this->getEntityManager()->createQuery($dql);
-		$query -> setParameter(1,$email);
-		$query -> setParameter(2,$password);
-		$query -> setParameter(3,$nombre);
-		$query -> setParameter(5,$apellidos);
-		$query -> setParameter(6,$estado);
-		$query -> setParameter(7,$rol);
-		return $query->getResult();
-	}
-
-
-
-
-
 }

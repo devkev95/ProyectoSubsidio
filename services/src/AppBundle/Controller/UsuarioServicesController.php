@@ -43,27 +43,29 @@ class UsuarioServicesController extends FOSRestController{
  	}
 
  	/**
-	* @Rest\Get("/usuario/{email},{password},{nombre},{apellidos},{estado},{rol}/")
+	* @Rest\Post("/usuario")
 	*/
 
- public function createAction($email, $password, $nombre, $apellidos, $estado, $rol)
+ public function createAction(Request $request)
 {
-    $product = new Usuario();
-    $product->setEmail($email);
-    $product->setPassword($password);
-    $product->setNombre($nombre);
-    $product->setApellidos($apellidos);
-    $product->setEstado($estado);
-    $rol1 = new Rol();
-    $rol1 ->setNombre($rol);
-    $product->setRol($rol1 -> getId());
-
-
     $em = $this->getDoctrine()->getManager();
+    $usuario = new Usuario();
+    $data = json_decode($request->getContent(), true);
+    $usuario->setEmail($data["email"]);
+    $usuario->setPassword($data["password"]);
+    $usuario->setNombre($data["nombres"]);
+    $usuario->setApellidos($data["apellidos"]);
+    $usuario->setEstado($data["activo"]);
+    $roles = $em->getRepository("AppBundle:Rol")->getRoles($data["rolId"]);
+ 		foreach ($roles as $rol) {
+ 			$usuario->addRol($rol);
+ 		}
     $em->persist($product);
     $em->flush();
 
-    return new Response('Se creo el Usuario con Email: '.$product->getEmail());
+   
+
+    return new Response('Se creo el Usuario con Email: '.$usuario->getEmail());
 }
 
 
