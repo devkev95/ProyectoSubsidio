@@ -60,7 +60,7 @@ class UsuarioServicesController extends FOSRestController{
  		foreach ($roles as $rol) {
  			$usuario->addRol($rol);
  		}
-    $em->persist($product);
+    $em->persist($usuario);
     $em->flush();
 
    
@@ -68,27 +68,7 @@ class UsuarioServicesController extends FOSRestController{
     return new Response('Se creo el Usuario con Email: '.$usuario->getEmail());
 }
 
-/**
-    * @Rest\Get("/usuario/{email},{password},{nombre},{apellidos},{estado},{rol}/")
-    */
-public function createAction1($email, $password, $nombre, $apellidos, $estado, $rol)
-{
-    $em = $this->getDoctrine()->getManager();
-    $product = new Usuario();
-    $product->setEmail($email);
-    $product->setPassword($password);
-    $product->setNombre($nombre);
-    $product->setApellidos($apellidos);
-    $product->setEstado($estado);
-    $roles = $em->getRepository("AppBundle:Rol")->getRoles($rol);
-        foreach ($roles as $rol) {
-            $usuario->addRol($rol);
-        }
-    $em->persist($product);
-    $em->flush();
 
-    return new Response('Created product id '.$product->getEmail());
-}
 
 }
 ?>
