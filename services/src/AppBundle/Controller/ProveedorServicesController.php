@@ -39,7 +39,7 @@ class ProveedorServicesController extends FOSRestController{
  	}
 
  	/**
- 	* @Rest\Post("/proveedor")
+ 	* @Rest\Post("/proveedor/prueba/")
  	*/
  	public function postAction(Request $request){
  		$em = $this->getDoctrine()->getManager();

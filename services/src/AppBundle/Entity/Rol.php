@@ -22,19 +22,7 @@ class Rol
 	*/
 	private $nombre;
 
-  /**
-   * @ORM\OneToMany(targetEntity="Usuario", mappedBy="rol")
-   **/
-
-    private $Usuarios;
-
-  /**
-   * Constructor
-   */
-  public function __construct()
-  {
-      $this->usuarios = new \Doctrine\Common\Collections\ArrayCollection();
-  }  
+  
 
 
     /**

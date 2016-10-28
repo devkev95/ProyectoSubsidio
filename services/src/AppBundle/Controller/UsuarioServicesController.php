@@ -42,24 +42,26 @@ class UsuarioServicesController extends FOSRestController{
  		return $singleresult;
  	}
 
- 	/**
-	* @Rest\Post("/usuario/prueba/")
-	*/
+
+/**
+    * @Rest\Post("/usuario/prueba/")
+    */
 
  public function createAction(Request $request)
 {
     $em = $this->getDoctrine()->getManager();
     $usuario = new Usuario();
     $data = json_decode($request->getContent(), true);
+    
     $usuario->setEmail($data["email"]);
     $usuario->setPassword($data["password"]);
     $usuario->setNombre($data["nombres"]);
     $usuario->setApellidos($data["apellidos"]);
     $usuario->setEstado($data["activo"]);
-    $roles = $em->getRepository("AppBundle:Rol")->getRoles($data["rolId"]);
- 		foreach ($roles as $rol) {
- 			$usuario->addRol($rol);
- 		}
+    $roles = $em->getRepository("AppBundle:Rol")->getRoles($data["rol"]);
+        foreach ($roles as $rol) {
+            $usuario->addRol($rol);
+        }
     $em->persist($usuario);
     $em->flush();
 
@@ -67,6 +69,7 @@ class UsuarioServicesController extends FOSRestController{
 
     return new Response('Se creo el Usuario con Email: '.$usuario->getEmail());
 }
+
 
 
 

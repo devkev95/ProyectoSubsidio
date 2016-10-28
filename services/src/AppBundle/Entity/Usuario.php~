@@ -37,18 +37,11 @@ class Usuario{
 	private $estado;
 
 	 /**
-    * @ORM\ManyToOne(targetEntity="Rol", inversedBy="usuarios")
+    * @ORM\ManyToOne(targetEntity="Rol")
     * @ORM\JoinColumn(name="rolId", referencedColumnName="idRol")
     */
 	 private $rol;
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->roles = new \Doctrine\Common\Collections\ArrayCollection();
-    }
 
     /**
      * Set email
