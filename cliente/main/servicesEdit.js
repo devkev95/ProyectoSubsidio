@@ -1,6 +1,6 @@
 
 
-angular.module('myApp.services', []).factory('ProveedorChar', function($resource){
+angular.module('myAppEdit.services', []).factory('ProveedorChar', function($resource){
 
   return $resource('http://localhost:8000/proveedor:num_registro', {numeroRegistro:'@num_registro'}, {
 

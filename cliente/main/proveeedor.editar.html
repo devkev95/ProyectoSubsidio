@@ -19,11 +19,11 @@
 
 
 
-  <script type="text/javascript" charset="utf-8" src="app.js"></script>
+  <script type="text/javascript" charset="utf-8" src="appEdit.js"></script>
 
-  <script type="text/javascript" charset="utf-8" src="controller.js"></script>
+  <script type="text/javascript" charset="utf-8" src="controllerEdit.js"></script>
 
-  <script type="text/javascript" charset="utf-8" src="services.js"></script>
+  <script type="text/javascript" charset="utf-8" src="servicesEdit.js"></script>
 
   <script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.min.js"></script>
 
@@ -139,35 +139,44 @@
      <div class="tbl">
       <div class="col-md-11">
        <div class="wdgt">
-        <div class="wdgt-header">Recurso</div>
+        <div class="wdgt-header">Proveedor</div>
         <div class="wdgt-body" style="padding-bottom:0px; padding-top:10px;">
       
 
-          <form id="recurso-form" method="POST" action="">
-
+          <form id="proveedorChar" method="PUT" ng-controller="TablaProveedoresEditCtrl">
+             <!-- Numero Registro -->
+          <div class="form-group">
+           <label>Numero Registro</label>
+           <input type="text" class="form-control" ng-modal="num_registro" required="required" id="inputFName" placeholder="numeroRegistro" name="num_registro" >
+          </div>
           <!-- NOMBRE -->
           <div class="form-group">
            <label>Nombre de Proveedor</label>
-           <input type="text" class="form-control" required="required" id="inputFName" placeholder="nombre" name="nombre" >
+           <input type="text" class="form-control"  ng-modal="nombre_proveedor" required="required" id="inputFName" placeholder="nombre" name="nombre_proveedor" >
           </div>
           <!-- Direccion -->
            <div class="form-group">
            <label>Direccion</label>
-           <input type="text" class="form-control" required="required" id="inputFName" placeholder="dirreccion" name="dirreccion"  >
+           <input type="text" class="form-control" ng-modal="direccion" required="required" id="inputFName" placeholder="dirreccion" name="dirreccion"  >
           </div>
           <!-- Telefono -->
            <div class="form-group">
            <label>Telefono</label>
-           <input type="text" class="form-control" required="required" id="inputFName" placeholder="Telefono" name="telefono" >
+           <input type="text" class="form-control" ng-modal="telefono" required="required" id="inputFName" placeholder="Telefono" name="telefono" >
           </div>
           <!-- Correo Contacto  -->
            <div class="form-group">
            <label>Correo contacto</label>
-           <input type="text" class="form-control" required="required" id="inputFName" placeholder="correoContacto" name="correoContacto" >
+           <input type="text" class="form-control" ng-modal="correo_contacto" required="required" id="inputFName" placeholder="correoContacto" name="correo_contacto" >
+          </div>
+          <!-- Estado  -->
+           <div class="form-group">
+           <label>Estado</label>
+           <input type="text" class="form-control" ng-modal="estado" required="required" id="inputFName" placeholder="estado" name="estado" >
           </div>
 
           <div class="form-actions">
-        <button type="submit" class="btn btn-success">Guardar</button>
+        <button type="submit"  class="btn btn-success">Guardar</button>
        </div>
          </form>
         </div>

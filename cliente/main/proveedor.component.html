@@ -185,7 +185,7 @@
                     <div class="modal-body">
 
                       <!-- content goes here -->
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" >
 
                          
 
@@ -265,6 +265,7 @@
        <th>Direccion</th>
        <th>Telefono</th>
        <th>Correo de contacto</th>
+       <th>Estado</th>
        <th></th>
       </tr>
      </thead>
@@ -284,8 +285,9 @@
             <td>{{character.direccion}}</td> 
             <td>{{character.telefono}}</td> 
             <td>{{character.correo_contacto}}</td>
+            <td>{{character.estado}}</td>
             <td class='center'>
-           <input style='max-width: 5%;' ng-click=\"window.location.href='proveedor.editar.html?num_registro={{character.num_registro}}';\" type='image' src='../lib/Imagenes/editar.png'>
+           <input style='max-width: 5%;' href="window.open('file:///home/kelly/ProyectoSubsidio/cliente/main/proveeedor.editar.html')" type='image' src='../lib/Imagenes/editar.png'>
            </td>
 
 
