@@ -17,4 +17,11 @@ class CuentaBancariaRepository extends \Doctrine\ORM\EntityRepository
 		$query->setParameter("ids", $ids);
 		return $query->getResult();
 	}
+
+	public function verTodos()
+	{
+		$dql = "SELECT c FROM AppBundle:CuentaBancaria c";
+		$query = $this->getEntityManager()->createQuery($dql);
+		return $query->getResult();
+	}
 }

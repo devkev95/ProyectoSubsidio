@@ -4,7 +4,9 @@ angular.module('myApp.services', []).factory('BreakinBadChar', function($resourc
 
     query: {method:'GET', isArray: true},
     get : {method: 'GET'},
-    save : {method: 'POST'}
+    save : {method: 'POST'},
+    update : {method: 'PUT'},
+    delete : {method: 'DELETE'}
 
   });
 

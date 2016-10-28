@@ -206,4 +206,8 @@ class Proveedor
     {
         return $this->cuentas;
     }
+
+    public function setCuentas($cuentas){
+        $this->cuentas = new \Doctrine\Common\Collections\ArrayCollection($cuentas);
+    }
 }

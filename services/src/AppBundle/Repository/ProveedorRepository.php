@@ -21,7 +21,7 @@ class ProveedorRepository extends \Doctrine\ORM\EntityRepository
 		$dql = "SELECT p from AppBundle:Proveedor p WHERE p.numRegistro=?1";
 		$query = $this->getEntityManager()->createQuery($dql);
 		$query -> setParameter(1,$num);
-		return $query->getResult();
+		return $query->getOneOrNullResult();
 	}
 
 }
