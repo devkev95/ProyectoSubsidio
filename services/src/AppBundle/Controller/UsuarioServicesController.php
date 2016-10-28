@@ -70,7 +70,7 @@ class UsuarioServicesController extends FOSRestController{
 
 
     /**
-    * @Rest\Put("/usuario/{email}/")
+    * @Rest\Put("/usuario/{email}")
     */
 
 public function putAction($email, Request $request)
