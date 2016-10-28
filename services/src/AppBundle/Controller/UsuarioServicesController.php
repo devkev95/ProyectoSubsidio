@@ -71,6 +71,31 @@ class UsuarioServicesController extends FOSRestController{
 }
 
 
+    /**
+    * @Rest\Put("/usuario/{email}/")
+    */
+
+public function putAction($email, Request $request)
+{
+    $em = $this->getDoctrine()->getManager();
+    $usuarioU = $em->getRepository('AppBundle:Usuario')->usuarioId($email);
+    $data = json_decode($request->getContent(), true);
+
+    if (!$usuarioU) {
+        throw $this->createNotFoundException(
+            'Usuario no encontrado'.$email
+        );
+    }
+    if (isset($data["password"])) {
+      $usuarioU->setPassword($data["password"])
+    }
+
+     $this->getDoctrine()->getManager()->flush();
+    return new View("Usuario modificado exitosamente", Response::HTTP_OK);
+
+}
+
+
 
 
 }
