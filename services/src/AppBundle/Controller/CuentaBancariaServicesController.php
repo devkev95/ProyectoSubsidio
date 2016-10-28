@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\CuentaBancaria;
 
-class CuentaBancariaServicesControllers extends FOSRestController
+class CuentaBancariaServicesController extends FOSRestController
 {
 	
 	/**
