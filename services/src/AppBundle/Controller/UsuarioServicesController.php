@@ -85,7 +85,7 @@ public function putAction($email, Request $request)
         );
     }
     if (isset($data["password"])) {
-      $usuarioU->setPassword($data["password"])
+      $usuarioU->setPassword($data["password"]);
     }
 
      $this->getDoctrine()->getManager()->flush();
