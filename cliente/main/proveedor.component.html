@@ -187,49 +187,50 @@
                       <!-- content goes here -->
                       <form class="form-horizontal">
 
-                         <div class="form-group">
-                          <label class="col-lg-3 control-label">Nombre Proveedor</label>
-                          <div class="col-lg-7">
-                            <input type="text" class="form-control" name="nombre" required/>
-                          </div>
-                        </div>
+                         
 
                         <div class="form-group">
                           <label class="col-lg-3 control-label">Número de registro</label>
                           <div class="col-lg-7">
-                            <input type="text" class="form-control" name="numero" required/>
+                            <input type="text" ng-modal="num_registro" class="form-control" name="numero" required/>
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label class="col-lg-3 control-label">Nombre Proveedor</label>
+                          <div class="col-lg-7">
+                            <input type="text" ng-modal="nombre_proveedor" class="form-control" name="nombre" required/>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label class="col-lg-3 control-label">Dirección</label>
                           <div class="col-lg-7">
-                            <input type="text" class="form-control" name="direccion" required/>
+                            <input type="text" ng-modal="direccion" class="form-control" name="direccion" required/>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label class="col-lg-3 control-label">Télefono</label>
                           <div class="col-lg-7">
-                            <input type="text" class="form-control" name="tel" required/>
+                            <input type="text" ng-modal="telefono" class="form-control" name="tel" required/>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label class="col-lg-3 control-label">E-mail</label>
                           <div class="col-lg-7">
-                            <input type="text" step="0.01" class="form-control" name="email" required/>
+                            <input type="email"  ng-modal="correo_contacto" class="form-control" name="email" required/>
                           </div>
                         </div>
 
                         <div class="form-group">
                           <label class="col-lg-3 control-label">Estado</label>
                           <div class="col-lg-7">
-                            <input type="text" step="0.01" class="form-control" name="estado" required/>
+                            <input type="text" ng-modal="estado" class="form-control" name="estado" required/>
                           </div>
                         </div>
 
-                       
 
                         <div class="btn-group btn-group-justified" role="group" aria-label="group button">
                           <div class="btn-group" role="group">
@@ -239,6 +240,8 @@
                             <button type="reset" class="btn btn-info">Limpiar</button>
                           </div>
                         </div>
+
+                        
 
                       </form>
 
@@ -277,14 +280,14 @@
             <!-- Muestra los datos del registro -->
 
             <td>{{character.num_registro}}</td>
-            <td>{{character.nombreProveedor}}</td>  
+            <td>{{character.nombre_proveedor}}</td>  
             <td>{{character.direccion}}</td> 
             <td>{{character.telefono}}</td> 
             <td>{{character.correo_contacto}}</td>
             <td class='center'>
-           <input style='max-width: 5%;' onClick='' type='image' src='../lib/Imagenes/editar.png'>
+           <input style='max-width: 5%;' ng-click=\"window.location.href='proveedor.editar.html?num_registro={{character.num_registro}}';\" type='image' src='../lib/Imagenes/editar.png'>
            </td>
-        
+
 
       </tr>
       </div>
@@ -322,7 +325,6 @@
   <script src="../lib/JS/jquery.dataTables.js"></script>
   <script src="../lib/JS/DT_bootstrap.js"></script>
   <script src="../lib/JS/soft-widgets.js"></script>
-
 
   <script>
 
