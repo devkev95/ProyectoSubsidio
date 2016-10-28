@@ -20,7 +20,7 @@ class UsuarioRepository extends \Doctrine\ORM\EntityRepository
 		$dql = "SELECT p.password from AppBundle:Usuario p WHERE p.email=?1";
 		$query = $this->getEntityManager()->createQuery($dql);
 		$query -> setParameter(1,$email);
-		return $query->getResult();
+		return $query->getOneOrNullResult();
 	}
 
 }

@@ -58,10 +58,8 @@ class UsuarioServicesController extends FOSRestController{
     $usuario->setNombre($data["nombres"]);
     $usuario->setApellidos($data["apellidos"]);
     $usuario->setEstado($data["activo"]);
-    $roles = $em->getRepository("AppBundle:Rol")->getRoles($data["rol"]);
-        foreach ($roles as $rol) {
-            $usuario->addRol($rol);
-        }
+    $roles = $em->getRepository("AppBundle:Rol")->getRol($data["rol"]);
+    $usuario->setRol($rol);
     $em->persist($usuario);
     $em->flush();
 
