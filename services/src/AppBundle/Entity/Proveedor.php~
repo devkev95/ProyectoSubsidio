@@ -16,6 +16,8 @@ class Proveedor
 	*/
 	private $numRegistro;
 
+ 
+
 	/**
 	* @ORM\Column(type="text", length=350, name="direccion")
 	*/
@@ -77,6 +79,8 @@ class Proveedor
         return $this->numRegistro;
     }
 
+
+ 
     /**
      * Set direccion
      *

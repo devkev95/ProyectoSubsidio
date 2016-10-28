@@ -14,6 +14,11 @@ use AppBundle\Entity\Proveedor;
 use AppBundle\Entity\CuentaBancaria;
 
 class ProveedorServicesController extends FOSRestController{
+
+
+
+
+
 	
 	/**
 	* @Rest\Get("/proveedor")
@@ -39,13 +44,14 @@ class ProveedorServicesController extends FOSRestController{
  	}
 
  	/**
- 	* @Rest\Post("/proveedor/prueba/")
+ 	* @Rest\Post("/proveedor")
  	*/
  	public function postAction(Request $request){
  		$em = $this->getDoctrine()->getManager();
  		$proveedor = new Proveedor;
  		$data = json_decode($request->getContent(), true);
  		$proveedor->setNumRegistro($data["numRegistro"]);
+ 		$proveedor->setNombreProveedor($data["nombreProveedor"]);
  		$proveedor->setDireccion($data["direccion"]);
  		$proveedor->setTelefono($data["telefono"]);
  		$proveedor->setCorreoContacto($data["correoContacto"]);
@@ -66,6 +72,9 @@ class ProveedorServicesController extends FOSRestController{
  	public function putAction($numRegistro, Request $request){
  		$proveedor= $this->getDoctrine()->getRepository("AppBundle:Proveedor")->find($numRegistro);
  		$data = json_decode($request->getContent(), true);
+ 		if (isset($data["nombreProveedor"])) {
+ 			$proveedor->setNombreProveedor($data["nombreProveedor"]);
+ 		}
  		if (isset($data["direccion"])) {
  			$proveedor->setDireccion($data["direccion"]);
  		}

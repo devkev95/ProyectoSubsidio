@@ -16,6 +16,12 @@ class Proveedor
 	*/
 	private $numRegistro;
 
+
+    /**
+    * @ORM\Column(type="text", length=100, name="nombreProveedor")
+    */
+    private $nombreProveedor;
+
 	/**
 	* @ORM\Column(type="text", length=350, name="direccion")
 	*/
@@ -76,6 +82,33 @@ class Proveedor
     {
         return $this->numRegistro;
     }
+
+
+     /**
+     * Set nombreProveedor
+     *
+     * @param string $nombreProveedor
+     *
+     * @return Proveedor
+     */
+    public function setNombreProveedor($nombreProveedor)
+    {
+        $this->nombreProveedor = $nombreProveedor;
+
+        return $this;
+    }
+
+
+    /**
+     * Get nombreProveedor
+     *
+     * @return string
+     */
+    public function getNombreProveedor()
+    {
+        return $this->nombreProveedor;
+    }
+
 
     /**
      * Set direccion
