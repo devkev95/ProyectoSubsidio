@@ -44,7 +44,7 @@ class UsuarioServicesController extends FOSRestController{
 
 
 /**
-    * @Rest\Post("/usuario/prueba/")
+    * @Rest\Post("/usuario")
     */
 
  public function createAction(Request $request)
@@ -59,7 +59,6 @@ class UsuarioServicesController extends FOSRestController{
     $usuario->setApellidos($data["apellidos"]);
     $usuario->setEstado($data["activo"]);
     $roles = $em->getRepository("AppBundle:Rol")->getRol($data["rol"]);
-    $usuario->setRol($rol);
     $em->persist($usuario);
     $em->flush();
 

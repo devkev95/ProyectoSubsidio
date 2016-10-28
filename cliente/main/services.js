@@ -1,6 +1,8 @@
-angular.module('myApp.services', []).factory('BreakinBadChar', function($resource){
 
-  return $resource('http://localhost:8000/proveedor/:num_registro', {num_registro:'@num_registro'}, {
+
+angular.module('myApp.services', []).factory('ProveedorChar', function($resource){
+
+  return $resource('http://localhost:8000/proveedor',{}, {
 
     query: {method:'GET', isArray: true},
     get : {method: 'GET'},
@@ -11,3 +13,4 @@ angular.module('myApp.services', []).factory('BreakinBadChar', function($resourc
   });
 
 });
+
