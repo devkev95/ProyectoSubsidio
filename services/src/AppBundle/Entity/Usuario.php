@@ -3,12 +3,13 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UsuarioRepository")
  * @ORM\Table(name="usuario")
  */
-class Usuario{
+class Usuario implements AdvancedUserInterface{
 
 	/**
      * @ORM\Column(type="string", name="email", length=150)
@@ -186,4 +187,48 @@ class Usuario{
     {
         return $this->rol;
     }
+
+     public function getUsername()
+    {
+        return $this->email;
+    }
+
+    public function getRoles()
+    {
+        if ($this->rol->getNombre() == "Jefe") {
+            return ['ROLE_BOSS'];
+        }else if ($this->rol->getNombre() == "Administrativo"){
+            return ['ROLE_USER'];
+        }else if ($this->rol->getNombre() == "Administrador"){
+            return ['ROLE_ADMIN'];
+        }
+    }
+    
+    public function getSalt()
+    {
+    }
+    public function eraseCredentials()
+    {
+    }
+
+    public function isAccountNonExpired()
+    {
+        return true;
+    }
+
+    public function isAccountNonLocked()
+    {
+        return true;
+    }
+
+    public function isCredentialsNonExpired()
+    {
+        return true;
+    }
+
+    public function isEnabled()
+    {
+        return $this->estado;
+    }
+
 }

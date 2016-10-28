@@ -56,7 +56,6 @@ class ProveedorServicesController extends FOSRestController{
  		$proveedor->setTelefono($data["telefono"]);
  		$proveedor->setCorreoContacto($data["correoContacto"]);
  		$proveedor->setEstado($data["estado"]);
- 		$cuenta = array();
  		foreach ($data["cuentas"] as $cuenta) {
  			$proveedor->addCuenta($em->getReference("AppBundle:CuentaBancaria", $cuenta));
  		}
