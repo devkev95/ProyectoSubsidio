@@ -10,14 +10,15 @@ body {
  				padding-bottom:140px; }
 
 .alertDiv {margin: auto auto 2em auto; max-width: 35%; min-width:30em; text-align: left;}
-#login { color:#555;
+.login { color:#555;
     max-width:30%; min-width:25em; margin:auto;
     padding: 25px 25px 20px 25px;
     background:rgba(255, 255, 255, 0.75); text-align:left;
  }
-#login .input-icon > .icon { color:#CCC; }
-#login .input-icon { position:relative; top:-20px; }
-#login label { font-weight:normal !important; }
-#log-contain .tbl { margin:auto; padding:15px 10px;  background:rgba(239, 239, 239, 0.75); max-width:30%; 
+.login .input-icon > .icon { color:#CCC; }
+.login .input-icon { position:relative; top:-20px; }
+.login label { font-weight:normal !important; }
+.log-contain .tbl { margin:auto; padding:15px 10px;  background:rgba(239, 239, 239, 0.75); max-width:30%; 
     min-width:25em; }
 .btn-primary { opacity:0.95; filter:alpha(opacity=95); }
+#form-header{text-align: center; width: 100%;}

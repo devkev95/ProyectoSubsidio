@@ -51,22 +51,28 @@ class UsuarioServicesController extends FOSRestController{
     */
     public function createAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $usuario = new Usuario();
-        $data = json_decode($request->getContent(), true);
-    
-        $usuario->setEmail($data["email"]);
-        $password = $this->container->get('security.password_encoder')->encodePassword($usuario, $data["password"]);
-        $usuario->setPassword($password);
-        $usuario->setNombre($data["nombres"]);
-        $usuario->setApellidos($data["apellidos"]);
-        $usuario->setEstado($data["activo"]);
-        $rol = $em->getRepository("AppBundle:Rol")->getRol($data["rol"]);
-        $usuario->setRol($rol);
-        $em->persist($usuario);
-        $em->flush();
+        try {
+            $em = $this->getDoctrine()->getManager();
+            $usuario = new Usuario();
+            $data = json_decode($request->getContent(), true);
+        
+            $usuario->setEmail($data["email"]);
+            $password = $this->container->get('security.password_encoder')->encodePassword($usuario, $data["password"]);
+            $usuario->setPassword($password);
+            $usuario->setNombre($data["nombres"]);
+            $usuario->setApellidos($data["apellidos"]);
+            $usuario->setEstado($data["activo"]);
+            $rol = $em->getRepository("AppBundle:Rol")->getRol($data["rol"]);
+            $usuario->setRol($rol);
+            $em->persist($usuario);
+            $em->flush();
 
-        return new Response('Se creo el Usuario con Email: '.$usuario->getEmail());
+            return new Response('Se creo el Usuario con Email: '.$usuario->getEmail());
+        } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e){
+            return $this->view(array('response' => 'Usuario ya existente. Por favor intente con otro'), 400);   
+        } catch (\Exception $e){
+            return $this->view(array('response' => 'Ha sucedido un error en la base de datos. Por favor intente más tarde'), 400); 
+        }
     }
 
 
@@ -115,7 +121,7 @@ class UsuarioServicesController extends FOSRestController{
             ->encode(['email' => $user->getEmail(), "role"=>$user->getRoles()]);
 
         // Return genereted tocken
-        return $this->view(array('token' => $token), 200);
+        return $this->view(array('token' => $token, 'nombre' => $user->getNombre()." ".$user->getApellidos(), 'rol' => $user->getRol()->getNombre()), 200);
     }
 
 
