@@ -1,0 +1,1 @@
+angular.module('myAppEdit', ['ngResource', 'myAppEdit.controllers', 'myAppEdit.services']);
