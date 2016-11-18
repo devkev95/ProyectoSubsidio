@@ -122,6 +122,7 @@ class UsuarioServicesController extends FOSRestController{
 
         // Return genereted tocken
         return $this->view(array('token' => $token, 'nombre' => $user->getNombre()." ".$user->getApellidos(), 'rol' => $user->getRol()->getNombre()), 200);
+
     }
 
 
