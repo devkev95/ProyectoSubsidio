@@ -52,8 +52,10 @@
   <div class="form-group">                
     <div style="padding-left:110px">
       <input type="submit" value="Guardar" class="btn btn-primary"/>
+      <input type="submit" value="Actualizar" class="btn btn-primary" ng-click="updateProveedor(num_registro)"/>
     </div>
   </div>
+
 </form>
 
 
@@ -94,6 +96,7 @@
             <td>{{character.estado}}</td>
             <td>
              <input type="button" value="Eliminar" class="btn btn-primary" ng-click="deleteRow(character.num_registro)"/>
+             <input type="button" value="Modificar" class="btn btn-primary" ng-click="updateRow(character.num_registro)"/>
              </td>
 
 

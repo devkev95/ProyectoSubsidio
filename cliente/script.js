@@ -153,6 +153,51 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
 	};
 
+	$scope.updateRow= function(num_registro){
+
+		$http.get('http://localhost:8000/proveedor/'+num_registro)
+		.success(function(data) {
+			$scope.num_registro=data.num_registro;
+			$scope.nombre_proveedor=data.nombre_proveedor;
+			$scope.direccion=data.direccion;
+			$scope.telefono=data.telefono;
+			$scope.correo_contacto=data.correo_contacto;
+			$scope.estado=data.estado;
+			$scope.cuentas=data.cuentas[0].num_cuenta;
+			}); 
+	};
+
+	 $scope.updateProveedor = function(num_registro){	
+   
+   
+    //$scope.characters.push({'num_registro':$scope.num_registro, 'nombre_proveedor': $scope.nombre_proveedor, 'direccion':$scope.direccion, 'telefono':$scope.telefono, 'correo_contacto': $scope.correo_contacto, 'estado':$scope.estado, 'cuentas':$scope.cuentas});
+	
+    //var data = "numRegistro=" +$scope.num_registro + ',nombreProveedor='+ $scope.nombre_proveedor + ',direccion=' + $scope.direccion + ', telefono=' + $scope.telefono + ', correoContacto=' + $scope.correo_contacto + ',estado=' + $scope.estado + ',cuentas=' + $scope.cuentas;
+    var data = {"nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+"","cuentas":[{"numCuenta": ""+$scope.cuentas+""}]};
+
+    //var data = {"numRegistro":"31113-559","nombreProveedor":"Z-gas","direccion":"Otra cosa", "telefono":"2577-7777","correoContacto":"algoyotracosa@algo.com","estado":1,"cuentas":[{"numCuenta":"112233"}]};
+
+    $http.put('http://localhost:8000/proveedor/'+num_registro, data)
+	.success(function(data) {
+		$scope.message = data;
+		$scope.getProveedores();
+		alert($scope.message);
+
+	}); 
+
+
+	$scope.num_registro='';
+	$scope.nombre_proveedor='';
+	$scope.direccion='';
+	$scope.telefono='';
+	$scope.correo_contacto='';
+	$scope.estado='';
+	$scope.cuentas='';
+   
+   	$scope.getProveedores();
+	
+	};
+
 
 
 
@@ -160,6 +205,8 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
 
 	});
+
+
 
 	var token;
 
