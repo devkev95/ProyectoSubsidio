@@ -7,8 +7,8 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
 			// route for the home page
 			.when('/', {
-				templateUrl : 'pages/home.html',
-				controller  : 'mainController'
+				templateUrl : 'pages/login.html',
+				controller  : 'loginController'
 			})
 
 			// route for the about page
@@ -112,6 +112,7 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
     $http.post('http://localhost:8000/proveedor', data)
 	.success(function(data) {
 		$scope.message = data;
+		alert($scope.message);
 	}); 
 
 
@@ -125,6 +126,38 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
    
 	
 	};
+
+	$scope.deleteRow= function(num_registro){
+
+		var index = -1;		
+		var comArr = eval( $scope.characters );
+		for( var i = 0; i < comArr.length; i++ ) {
+			if( comArr[i].num_registro === num_registro ) {
+				index = i;
+				break;
+			}
+		}
+		if( index === -1 ) {
+			alert( "Algo salio mal" );
+		}
+		$scope.characters.splice( index, 1 );	
+
+		var data = {"numRegistro":""+$scope.num_registro+""};
+
+		$http.delete('http://localhost:8000/proveedor/'+num_registro)
+		.success(function(data) {
+			$scope.message = data;
+			alert($scope.message);
+			}); 
+
+
+	};
+
+
+
+
+
+
 
 	});
 
