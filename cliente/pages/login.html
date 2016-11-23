@@ -1,6 +1,7 @@
 <meta charset="utf-8" />
 	   		
-
+<div id="log-tbl">
+	   			
 	   			<div id="log-contain">
 						<div class="alertDiv alert alert-success alert-round alert-border alert-soft">
 						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
@@ -27,10 +28,9 @@
 	       					</div>
 	      				</div>
 	      				<div class="form-group">
-	       					<button type="submit" id="login-btn" class="btn btn-primary btn-block btn-lg">Login&nbsp;&nbsp;&nbsp;<i class="fa fa-play"></i></button>	       				
+	       					<button type="submit" id="login-btn" class="btn btn-primary btn-block btn-lg" ng-click="#/nuevoUsuario" >Login&nbsp;&nbsp;&nbsp;<i class="fa fa-play"></i></button>	       				
 	      				</div>
-	      				Nombre almacenado:
-						<label type="text" id="token"></label>
+	      				
 				</div>
 				<div class="tbl">
      				<div class="col-md-12" >
@@ -39,7 +39,7 @@
      				</div>
     			</div>
 			</div>
-	   
+	   </div>
 		<script type="text/javascript" src="../lib/JS/jquery-3.1.0.min.js"></script>
 		<script type="text/javascript" src="../lib/JS/bootstrap.min.js"></script>
 		<script type="text/javascript" src="../lib/JS/hogan.min.js" ></script>
@@ -63,7 +63,7 @@
                     			}
                 			}
 		 	 			},
-		     			pass: {
+		     			password: {
                 			validators: {
                     			notEmpty: {
                         			message: 'Por favor ingrese la contraseña'

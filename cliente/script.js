@@ -11,9 +11,9 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 				controller  : 'loginController'
 			})
 
-			.when('/login', {
-				templateUrl : 'pages/login.html',
-				controller  : 'loginController'
+			.when('/home', {
+				templateUrl : 'pages/home.html',
+				controller  : 'homeController'
 			})
 			.when('/nuevoUsuario', {
 				templateUrl : 'pages/new_account.html',
@@ -193,6 +193,7 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
     	$scope.message= data;
     	  token = data.token;
     	 alert(token);
+    	 window.location="#/home";
     });
 
 	$scope.email='';
