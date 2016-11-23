@@ -1,5 +1,4 @@
-<div id="log-tbl">
-<form class="form-horizontal" role="form" >
+<form class="form-horizontal" role="form" ng-submit="addRow()">
   <div class="form-group">
     <label class="col-md-2 control-label">Numero Registro</label>
     <div class="col-md-4">
@@ -52,56 +51,8 @@
 
   <div class="form-group">                
     <div style="padding-left:110px">
-      <input type="submit" value="Actualizar" class="btn btn-primary" ng-click="updateProveedor(num_registro)"/>
+      <input type="submit" value="Guardar" class="btn btn-primary"/>
     </div>
   </div>
 
 </form>
-
-
-
-
-<table cellpadding="10" cellspacing="10" border="10" class=" table table-striped table-bordered">
-
-          <!--ENCABEZADO DE LA TABLA RECURSOS -->
-
-     <thead>
-      <tr>
-       <th>Numero de registro</th>
-       <th>Nombre de proveedor</th>
-       <th>Direccion</th>
-       <th>Telefono</th>
-       <th>Correo de contacto</th>
-       <th>Estado</th>
-       <th>Accion</th>
-
-      </tr>
-     </thead>
-
-
-        <!--CUERPO DE LA TABLA RECURSOS -->
-
-
-     <tbody>
-
-     <div><tr ng-repeat="character in characters"> <!-- ng-repeat function como un "for" iterando la variable characters hidratada en el controlador -->
-
-            <!-- Muestra los datos del registro -->
-
-            <td>{{character.num_registro}}</td>
-            <td>{{character.nombre_proveedor}}</td>  
-            <td>{{character.direccion}}</td> 
-            <td>{{character.telefono}}</td> 
-            <td>{{character.correo_contacto}}</td>
-            <td>{{character.estado}}</td>
-            <td>
-             <input type="button" value="Eliminar" class="btn btn-primary" ng-click="deleteRow(character.num_registro)"/>
-             <input type="button" value="Modificar" class="btn btn-primary" ng-click="updateRow(character.num_registro)"/>
-             </td>
-
-
-      </tr>
-      </div>
-     </tbody>
-    </table>
-</div>

@@ -1,0 +1,39 @@
+<div id="log-tbl">
+
+<table cellpadding="10" cellspacing="10" border="10" class=" table table-striped table-bordered">
+
+          <!--ENCABEZADO DE LA TABLA RECURSOS -->
+
+     <thead>
+      <tr>
+       <th>Numero de cuenta</th>
+       <th>Nombre banco</th>
+       <th>Monto actual</th>      
+       <th>Accion</th>
+
+      </tr>
+     </thead>
+
+
+        <!--CUERPO DE LA TABLA RECURSOS -->
+
+
+     <tbody>
+
+     <div><tr ng-repeat="cuenta in cuentas"> <!-- ng-repeat function como un "for" iterando la variable characters hidratada en el controlador -->
+
+            <!-- Muestra los datos del registro -->
+
+            <td>{{cuenta.num_cuenta}}</td>
+            <td>{{cuenta.nombre_banco}}</td>  
+            <td>{{cuenta.monto_actual}}</td> 
+            <td>
+             <input type="button" value="Modificar" class="btn btn-primary" ng-click="updateRow(cuenta.num_cuenta)"/>
+             </td>
+
+
+      </tr>
+      </div>
+     </tbody>
+    </table>
+</div>

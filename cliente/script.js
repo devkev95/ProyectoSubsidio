@@ -22,13 +22,21 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 			.when('/usuario', {
 				templateUrl : 'pages/usuario.html',
 				controller  : 'UsuarioController'
-			})			
+			})	
+			.when('/proveedor', {
+				templateUrl : 'pages/crearProveedor.html',
+				controller: 'proveedoresController'
+			})					
 			.when('/proveedores/', {
 				templateUrl : 'pages/proveedores.html',
 				controller: 'proveedoresController'
 			})
 			.when('/cuentas', {
 				templateUrl : 'pages/crearCuenta.html',
+				controller  : 'CuentaController'
+			})
+			.when('/cuentasC', {
+				templateUrl : 'pages/cuentas.html',
 				controller  : 'CuentaController'
 			});
 
@@ -246,6 +254,15 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 	$scope.monto_actual='';
 	
 	};
+
+	$scope.getCuentas = function(){
+        $http.get('http://localhost:8000/cuenta_bancaria')
+            .success(function(data){
+                $scope.cuentas = data;
+            });
+    };
+    
+    $scope.getCuentas();
 });
 
 
