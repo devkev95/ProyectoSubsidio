@@ -26,6 +26,10 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 			.when('/proveedores/', {
 				templateUrl : 'pages/proveedores.html',
 				controller: 'proveedoresController'
+			})
+			.when('/cuentas', {
+				templateUrl : 'pages/crearCuenta.html',
+				controller  : 'CuentaController'
 			});
 
 	});
@@ -177,7 +181,7 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 	};
 
 });
-
+	
 
 
 	var token;
@@ -222,6 +226,36 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
     $scope.getUsuarios();
 });
 
+
+	scotchApp.controller('CuentaController', function($scope, $http){
+
+    $scope.crearCuenta = function(){	
+    	
+    var data = {"numRegistro":""+$scope.num_registro+"","nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+"","cuentas":[{"numCuenta": ""+$scope.cuentas+""}]};
+
+
+    $http.post('http://localhost:8000/proveedor', data)
+	.success(function(data) {
+		$scope.message = data;
+		alert($scope.message);
+	}); 
+
+
+	$scope.num_registro='';
+	$scope.nombre_proveedor='';
+	$scope.direccion='';
+	$scope.telefono='';
+	$scope.correo_contacto='';
+	$scope.estado='';
+	$scope.cuentas='';
+   
+	
+	};
+
+
+
+
+	});
 
 
 

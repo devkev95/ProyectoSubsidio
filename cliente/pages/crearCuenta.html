@@ -1,0 +1,34 @@
+<div id="log-tbl">
+<form class="form-horizontal" role="form" ng-submit="crearCuenta()">
+  <div class="form-group">
+    <label class="col-md-2 control-label">Nombre del banco</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="nombre_banco"
+        ng-model="nombre_banco" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Numero de cuenta</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="num_cuenta"
+        ng-model="num_cuenta" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Monto</label>
+    <div class="col-md-4">
+      <input type="number" class="form-control" name="monto_actual"
+        ng-model="monto_actual" />
+    </div>
+  </div>
+  
+  <div class="form-group">                
+    <div style="padding-left:110px">
+      <input type="submit" value="Guardar" class="btn btn-primary"/>
+    </div>
+  </div>
+
+</form>
+
+
+
