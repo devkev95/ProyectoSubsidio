@@ -231,31 +231,22 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
     $scope.crearCuenta = function(){	
     	
-    var data = {"numRegistro":""+$scope.num_registro+"","nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+"","cuentas":[{"numCuenta": ""+$scope.cuentas+""}]};
+    var data = {"numCuenta":""+$scope.num_cuenta+"","banco": ""+$scope.nombre_banco+"","monto":""+$scope.monto_actual+""};
 
 
-    $http.post('http://localhost:8000/proveedor', data)
+    $http.post('http://localhost:8000/cuenta_bancaria', data)
 	.success(function(data) {
 		$scope.message = data;
 		alert($scope.message);
 	}); 
 
 
-	$scope.num_registro='';
-	$scope.nombre_proveedor='';
-	$scope.direccion='';
-	$scope.telefono='';
-	$scope.correo_contacto='';
-	$scope.estado='';
-	$scope.cuentas='';
-   
+	$scope.num_cuenta='';
+	$scope.nombre_banco='';
+	$scope.monto_actual='';
 	
 	};
-
-
-
-
-	});
+});
 
 
 
