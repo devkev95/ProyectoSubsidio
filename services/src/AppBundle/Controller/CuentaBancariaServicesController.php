@@ -25,5 +25,43 @@ class CuentaBancariaServicesController extends FOSRestController
      }
         return $resultset;
 	}
+
+
+	/**
+	* @Rest\Get("/cuenta_bancaria/{numCuenta}")
+	*/
+	public function numAction($numCuenta)
+	{
+		$resultset = $this->getDoctrine()->getRepository("AppBundle:CuentaBancaria")->getCuentas($numCuenta);
+		if ($resultset == null) {
+          return new View("No existe esa cuenta", Response::HTTP_NOT_FOUND);
+     }
+        return $resultset;
+	}
+
+
+
+
+
+		/**
+ 	* @Rest\Post("/cuenta_bancaria")
+ 	*/
+ 	public function postAction(Request $request){
+ 		$em = $this->getDoctrine()->getManager();
+ 		$cuenta = new CuentaBancaria;
+ 		$data = json_decode($request->getContent(), true);
+ 		$cuenta->setNumCuenta($data["numCuenta"]);
+ 		$cuenta->setNombreBanco($data["banco"]);
+ 		$cuenta->setMontoActual($data["monto"]);
+ 	
+ 		$em->persist($cuenta);
+ 		$em->flush();
+ 		return new View("Cuenta bancaria agregado exitosamente", Response::HTTP_OK);
+
+ 	}
+
+
+
+
 }
 ?>
