@@ -7,7 +7,7 @@ body {
    }
 #log-tbl { width:100%; height:100%; display:table; clear:both; content:''; }
 #log-contain { width:100%; height:100%; text-align:center; display:table-cell; vertical-align:middle; padding-top: 140px; 
-                padding-bottom:140px; }
+ 				padding-bottom:140px; }
 
 .alertDiv {margin: auto auto 2em auto; max-width: 35%; min-width:30em; text-align: left;}
 #login { color:#555;
@@ -21,4 +21,3 @@ body {
 #log-contain .tbl { margin:auto; padding:15px 10px;  background:rgba(239, 239, 239, 0.75); max-width:30%; 
     min-width:25em; }
 .btn-primary { opacity:0.95; filter:alpha(opacity=95); }
-#form-header{text-align: center; width: 100%;}
