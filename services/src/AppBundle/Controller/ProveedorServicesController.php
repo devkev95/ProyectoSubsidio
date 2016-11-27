@@ -56,9 +56,7 @@ class ProveedorServicesController extends FOSRestController{
  		$proveedor->setTelefono($data["telefono"]);
  		$proveedor->setCorreoContacto($data["correoContacto"]);
  		$proveedor->setEstado($data["estado"]);
- 		foreach ($data["cuentas"] as $cuenta) {
- 			$proveedor->addCuenta($em->getReference("AppBundle:CuentaBancaria", $cuenta));
- 		}
+ 		
  		$em->persist($proveedor);
  		$em->flush();
  		return new View("Proveedor agregado exitosamente", Response::HTTP_OK);
@@ -86,18 +84,7 @@ class ProveedorServicesController extends FOSRestController{
  		if (isset($data["estado"])) {
  			$proveedor->setEstado($data["estado"]);
  		}
- 		$cuentasNuevas = $this->getDoctrine()->getRepository("AppBundle:CuentaBancaria")->getCuentas($data["cuentas"]);
- 		$cuentasViejas = $proveedor->getCuentas();
- 		foreach ($cuentasViejas as $id => $cuenta) {
- 			if(!isset($cuentasNuevas[$id])){
- 				$proveedor->removeCuenta($cuenta);
- 			}else{
- 				unset($cuentasNuevas[$id]);
- 			}	
- 		}
- 		foreach ($cuentasNuevas as $id => $cuenta) {
- 			$proveedor->addCuenta($cuenta);
- 		}
+ 	
 
  		$this->getDoctrine()->getManager()->flush();
  		return new View("Proveedor modificado exitosamente", Response::HTTP_OK);
