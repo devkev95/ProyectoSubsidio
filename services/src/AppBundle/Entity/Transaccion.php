@@ -34,7 +34,7 @@ class Transaccion
 
 
     /**
-     * @ORM\OneToOne(targetEntity="CuentaBancaria")
+     * @ORM\ManyToOne(targetEntity="CuentaBancaria")
      * @ORM\JoinColumn(name="cuentaBancaria", referencedColumnName="numCuenta", nullable=false)
      */
     private $cuentaBancaria;
@@ -44,7 +44,7 @@ class Transaccion
 
 
     /**
-     * @ORM\OneToOne(targetEntity="Proveedor")
+     * @ORM\ManyToOne(targetEntity="Proveedor")
      * @ORM\JoinColumn(name="proveedor", referencedColumnName="numRegistro", nullable=false)
      */
     private $proveedor;

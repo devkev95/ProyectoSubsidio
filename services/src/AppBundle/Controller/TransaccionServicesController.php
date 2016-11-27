@@ -54,8 +54,9 @@ class TransaccionServicesController extends FOSRestController
  		$transaccion = new Transaccion;
  		$data = json_decode($request->getContent(), true);
  		$transaccion->setTipoTransaccion($data["tipo"]);
- 		$transaccion->setCuentaBancaria($data["cuenta"]);
- 		$transaccion->setProveedor($data["proveedor"]);
+ 		$transaccion->setCuentaBancaria($em->getReference("AppBundle:CuentaBancaria", $data["cuenta"]));
+ 		
+ 		$transaccion->setProveedor($em->getReference("AppBundle:Proveedor", $data["proveedor"]));
  		$transaccion->setMonto($data["monto"]);
  	
  		$em->persist($transaccion);
