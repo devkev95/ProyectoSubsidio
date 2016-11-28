@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
+use Doctrine\ORM\Event\PostFlushEventArgs;
+
 /**
  * Transaccion
  *
@@ -60,6 +63,11 @@ class Transaccion
     * @ORM\Column(type="float", name="monto")
     */
     private $monto;
+
+
+
+
+
 
     /**
      * Get id

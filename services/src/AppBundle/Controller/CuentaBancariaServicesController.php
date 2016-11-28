@@ -32,7 +32,7 @@ class CuentaBancariaServicesController extends FOSRestController
 	*/
 	public function numAction($numCuenta)
 	{
-		$resultset = $this->getDoctrine()->getRepository("AppBundle:CuentaBancaria")->getCuentas($numCuenta);
+		$resultset = $this->getDoctrine()->getRepository("AppBundle:CuentaBancaria")->getCuenta($numCuenta);
 		if ($resultset == null) {
           return new View("No existe esa cuenta", Response::HTTP_NOT_FOUND);
      }

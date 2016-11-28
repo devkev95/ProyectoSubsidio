@@ -10,11 +10,11 @@ namespace AppBundle\Repository;
  */
 class CuentaBancariaRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function getCuentas($ids)
+	public function getCuenta($num)
 	{
-		$dql = "SELECT c FROM AppBundle:CuentaBancaria c WHERE c.numCuenta IN(:ids)";
+		$dql = "SELECT c FROM AppBundle:CuentaBancaria c WHERE c.numCuenta=?1";
 		$query = $this->getEntityManager()->createQuery($dql);
-		$query->setParameter("ids", $ids);
+		$query->setParameter(1,$num);
 		return $query->getResult();
 	}
 

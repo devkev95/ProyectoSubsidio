@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\View\View;
 use AppBundle\Entity\Transaccion;
+use AppBundle\Entity\CuentaBancaria;
+use AppBundle\Repository;
 
 class TransaccionServicesController extends FOSRestController
 {
@@ -58,12 +60,38 @@ class TransaccionServicesController extends FOSRestController
  		
  		$transaccion->setProveedor($em->getReference("AppBundle:Proveedor", $data["proveedor"]));
  		$transaccion->setMonto($data["monto"]);
+
+
+
+ 		$cuenta=new CuentaBancaria;
+ 		$cuenta=$this->getDoctrine()->getRepository("AppBundle:CuentaBancaria")->getCuenta($data["cuenta"]);
+
+ 		$saldo=$cuenta[0];
+
+
+
+ 		if ($data["monto"]<=($saldo->getMontoActual())) {
+
+ 			$em->persist($transaccion);
+ 			$em->flush();
+
+ 			return new View("Transaccion agregada exitosamente", Response::HTTP_OK);
+ 			
+ 		}
+				
  	
- 		$em->persist($transaccion);
- 		$em->flush();
- 		return new View("Transaccion agregada exitosamente", Response::HTTP_OK);
+ 		else{
+ 			return new View("No hay fondos suficientes en esta cuenta", Response::HTTP_OK); }
+ 		
 
  	}
+
+
+
+
+
+
+
 
 
 
