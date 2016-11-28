@@ -13,7 +13,7 @@
                             </div> 
                             <div class="form-group">
                                 <label class="control-label" for="confirmPass">Repetir Contraseña</label>
-                                <input class="form-control form-soft input-sm" type="password" name="confirmPass">
+                                <input class="form-control form-soft input-sm" type="password" name="confirmPass"/>
                             </div>                           
 		      				<div class="form-group">
 		       					<label class="control-label" for="nombres">Nombres</label>
@@ -21,18 +21,18 @@
 		      				</div>
 		      				<div class="form-group">
 		       					<label class="control-label" for="apellidos">Apellidos</label>
-		        				<input class="form-control" type="text" name="apellidos" ng-model="apellidos">
+		        				<input class="form-control" type="text" name="apellidos" ng-model="apellidos"/>
 		      				</div>
 		      				<div class="form-group">
 		       					<label class="control-label" for="activo">Activo</label>
-		        				<input class="form-control" type="text" name="activo" ng-model="activo">
+		        				<input class="form-control" type="text" name="activo" ng-model="activo"/>
 		      				</div>
 		      				<div class="form-group">
 		       					<label class="control-label" for="rol">Rol</label>
-		        				<input class="form-control" type="password" name="rol" ng-model="rol">
+		        				<input class="form-control" type="text" name="rol" ng-model="rol"/>
 		      				</div>
 		      				<div class="form-group">
-		       					<button type="submit" id="login-btn" class="btn btn-primary btn-block btn-lg">Crear Usuario&nbsp;&nbsp;&nbsp;<i class="fa fa-play"></i></button>
+		       					<button type="submit" id="login-btn" class="btn btn-primary btn-block btn-lg">Crear Usuario</button>
 		      				</div>
 		      			 </form>
 					</div>
@@ -58,9 +58,9 @@
                         			message: 'Este campo no puede estar vacio'
                     			},
                     			stringLength: {
-        							min: 8,
+        							min: 4,
         							max: 40,
-        							message: 'La contraseña debe contener entre 8 y 40 carácteres'
+        							message: 'La contraseña debe contener entre 4 y 40 carácteres'
        							},
        							identical: {
         							field: 'confirmPass',
@@ -74,7 +74,7 @@
                         			message: 'Este campo no puede estar vacio'
                     			},
        							identical: {
-        							field: 'pass',
+        							field: 'password',
         							message: 'Las contraseñas no son iguales'
        							}
                 			}
@@ -92,7 +92,21 @@
             						message:'Este campo no puede estar vacio'
             					}
             				}
-            			}
+            			},
+                        rol:{
+                            validators:{
+                                notEmpty:{
+                                    message:'Este campo no puede estar vacio'
+                                }
+                            }
+                        },
+                        activo:{
+                            validators:{
+                                notEmpty:{
+                                    message:'Este campo no puede estar vacio'
+                                }
+                            }
+                        }
 		    		}
 		   		});
 		  	});

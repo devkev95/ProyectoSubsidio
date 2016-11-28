@@ -1,0 +1,39 @@
+<div id="log-tbl">
+
+<table cellpadding="10" cellspacing="10" border="10" class=" table table-striped table-bordered">
+
+          <!--ENCABEZADO DE LA TABLA RECURSOS -->
+
+     <thead>
+      <tr>
+       <th>Numero transaccion</th>
+       <th>Tipo transaccion</th>
+       <th>Cuenta bancaria</th>      
+       <th>Proveedor</th>
+       <th>Monto</th>
+
+      </tr>
+     </thead>
+
+
+        <!--CUERPO DE LA TABLA RECURSOS  $scope.cuentas=data.cuentas[0].num_cuenta;-->
+
+
+     <tbody>
+
+     <div><tr ng-repeat="cuenta in cuentas"> <!-- ng-repeat function como un "for" iterando la variable characters hidratada en el controlador -->
+
+            <!-- Muestra los datos del registro -->
+
+            <td>{{cuenta.num_transaccion}}</td>
+            <td>{{cuenta.tipo_transaccion}}</td>  
+            <td>{{cuenta.cuenta_bancaria.num_cuenta}}</td> 
+            <td>{{cuenta.proveedor.num_registro}}</td>
+            <td>{{cuenta.monto}}</td>
+
+
+      </tr>
+      </div>
+     </tbody>
+    </table>
+</div>

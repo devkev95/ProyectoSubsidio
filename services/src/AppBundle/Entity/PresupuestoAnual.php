@@ -6,7 +6,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PresupuestoAnualRepository")
  * @ORM\Table(name="presupuestoAnual")
  */
-class CuentaBancaria
+class PresupuestoAnual
 {
 	/**
 	* @ORM\Column(type="string", length=10, name="año")

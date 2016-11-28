@@ -38,23 +38,7 @@ class Proveedor
 	*/
 	private $estado;
 
-	/**
-	* @ORM\ManyToMany(targetEntity="CuentaBancaria")
-     * @ORM\JoinTable(name="cuentasProveedor",
-     *      joinColumns={@ORM\JoinColumn(name="numProveedor", referencedColumnName="numRegistro")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="cuenta", referencedColumnName="numCuenta")}
-     *      )
-	*/
-	private $cuentas;
-
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->cuentas = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
+	
     /**
      * Set numRegistro
      *
@@ -177,37 +161,5 @@ class Proveedor
         return $this->estado;
     }
 
-    /**
-     * Add cuenta
-     *
-     * @param \AppBundle\Entity\CuentaBancaria $cuenta
-     *
-     * @return Proveedor
-     */
-    public function addCuenta(\AppBundle\Entity\CuentaBancaria $cuenta)
-    {
-        $this->cuentas[] = $cuenta;
-
-        return $this;
-    }
-
-    /**
-     * Remove cuenta
-     *
-     * @param \AppBundle\Entity\CuentaBancaria $cuenta
-     */
-    public function removeCuenta(\AppBundle\Entity\CuentaBancaria $cuenta)
-    {
-        $this->cuentas->removeElement($cuenta);
-    }
-
-    /**
-     * Get cuentas
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCuentas()
-    {
-        return $this->cuentas;
-    }
+   
 }

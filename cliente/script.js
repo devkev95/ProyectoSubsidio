@@ -38,6 +38,14 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 			.when('/cuentasC', {
 				templateUrl : 'pages/cuentas.html',
 				controller  : 'CuentaController'
+			})
+			.when('/transacciones', {
+				templateUrl : 'pages/transacciones.html',
+				controller  : 'TransaccionController'
+			})
+			.when('/transaccion', {
+				templateUrl : 'pages/crearTransaccion.html',
+				controller  : 'TransaccionController'
 			});
 
 	});
@@ -49,14 +57,8 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
 
     $scope.addUsuario = function(){	
-   
-   
-   // $scope.characters.push({'num_registro':$scope.num_registro, 'nombre_proveedor': $scope.nombre_proveedor, 'direccion':$scope.direccion, 'telefono':$scope.telefono, 'correo_contacto': $scope.correo_contacto, 'estado':$scope.estado, 'cuentas':$scope.cuentas});
-	
-    //var data = "numRegistro=" +$scope.num_registro + ',nombreProveedor='+ $scope.nombre_proveedor + ',direccion=' + $scope.direccion + ', telefono=' + $scope.telefono + ', correoContacto=' + $scope.correo_contacto + ',estado=' + $scope.estado + ',cuentas=' + $scope.cuentas;
+   	
     var data = {"email":""+$scope.email+"","password": ""+$scope.password+"","nombres":""+$scope.nombres+"", "apellidos":""+$scope.apellidos+"","activo":""+$scope.activo+"", "rol":""+$scope.rol+""};
-
-    //var data = {"numRegistro":"31113-559","nombreProveedor":"Z-gas","direccion":"Otra cosa", "telefono":"2577-7777","correoContacto":"algoyotracosa@algo.com","estado":1,"cuentas":[{"numCuenta":"112233"}]};
 
     $http.post('http://localhost:8000/usuario', data)
 	.success(function(data) {
@@ -73,31 +75,16 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
    
 	
 	};
-
-	});
+});
 
 /*global define */
 
+
 	scotchApp.controller('proveedoresController', function($scope, $http) {
-
-    $scope.getProveedores = function(){
-        $http.get('http://localhost:8000/proveedor')
-            .success(function(data){
-                $scope.characters = data;
-            });
-    };
     
-    $scope.getProveedores();
-
     $scope.addRow = function(){	
-   
-   
-    $scope.characters.push({'num_registro':$scope.num_registro, 'nombre_proveedor': $scope.nombre_proveedor, 'direccion':$scope.direccion, 'telefono':$scope.telefono, 'correo_contacto': $scope.correo_contacto, 'estado':$scope.estado, 'cuentas':$scope.cuentas});
-	
-    //var data = "numRegistro=" +$scope.num_registro + ',nombreProveedor='+ $scope.nombre_proveedor + ',direccion=' + $scope.direccion + ', telefono=' + $scope.telefono + ', correoContacto=' + $scope.correo_contacto + ',estado=' + $scope.estado + ',cuentas=' + $scope.cuentas;
-    var data = {"numRegistro":""+$scope.num_registro+"","nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+"","cuentas":[{"numCuenta": ""+$scope.cuentas+""}]};
-
-    //var data = {"numRegistro":"31113-559","nombreProveedor":"Z-gas","direccion":"Otra cosa", "telefono":"2577-7777","correoContacto":"algoyotracosa@algo.com","estado":1,"cuentas":[{"numCuenta":"112233"}]};
+     
+    var data = {"numRegistro":""+$scope.num_registro+"","nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+""};
 
     $http.post('http://localhost:8000/proveedor', data)
 	.success(function(data) {
@@ -105,17 +92,24 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 		alert($scope.message);
 	}); 
 
-
 	$scope.num_registro='';
 	$scope.nombre_proveedor='';
 	$scope.direccion='';
 	$scope.telefono='';
 	$scope.correo_contacto='';
 	$scope.estado='';
-	$scope.cuentas='';
-   
-	
-	};
+
+   	};	
+
+
+	$scope.getProveedores = function(){
+        $http.get('http://localhost:8000/proveedor')
+            .success(function(data){
+                $scope.characters = data;
+            });
+    };
+    
+    $scope.getProveedores();
 
 	$scope.deleteRow= function(num_registro){
 
@@ -139,8 +133,6 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 			$scope.message = data;
 			alert($scope.message);
 			}); 
-
-
 	};
 
 	$scope.updateRow= function(num_registro){
@@ -153,19 +145,15 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 			$scope.telefono=data.telefono;
 			$scope.correo_contacto=data.correo_contacto;
 			$scope.estado=data.estado;
-			$scope.cuentas=data.cuentas[0].num_cuenta;
+
 			}); 
 	};
 
 	 $scope.updateProveedor = function(num_registro){	
    
-   
-    //$scope.characters.push({'num_registro':$scope.num_registro, 'nombre_proveedor': $scope.nombre_proveedor, 'direccion':$scope.direccion, 'telefono':$scope.telefono, 'correo_contacto': $scope.correo_contacto, 'estado':$scope.estado, 'cuentas':$scope.cuentas});
-	
-    //var data = "numRegistro=" +$scope.num_registro + ',nombreProveedor='+ $scope.nombre_proveedor + ',direccion=' + $scope.direccion + ', telefono=' + $scope.telefono + ', correoContacto=' + $scope.correo_contacto + ',estado=' + $scope.estado + ',cuentas=' + $scope.cuentas;
-    var data = {"nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+"","cuentas":[{"numCuenta": ""+$scope.cuentas+""}]};
+   	
+    var data = {"nombreProveedor": ""+$scope.nombre_proveedor+"","direccion":""+$scope.direccion+"", "telefono":""+$scope.telefono+"","correoContacto":""+$scope.correo_contacto+"", "estado":""+$scope.estado+""};
 
-    //var data = {"numRegistro":"31113-559","nombreProveedor":"Z-gas","direccion":"Otra cosa", "telefono":"2577-7777","correoContacto":"algoyotracosa@algo.com","estado":1,"cuentas":[{"numCuenta":"112233"}]};
 
     $http.put('http://localhost:8000/proveedor/'+num_registro, data)
 	.success(function(data) {
@@ -182,15 +170,13 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 	$scope.telefono='';
 	$scope.correo_contacto='';
 	$scope.estado='';
-	$scope.cuentas='';
-   
+
    	$scope.getProveedores();
 	
 	};
 
 });
 	
-
 
 	var token;
 
@@ -266,4 +252,33 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 });
 
 
+scotchApp.controller('TransaccionController', function($scope, $http){
+
+    $scope.crearCuenta = function(){	
+    	
+    var data = {"numCuenta":""+$scope.num_cuenta+"","banco": ""+$scope.nombre_banco+"","monto":""+$scope.monto_actual+""};
+
+
+    $http.post('http://localhost:8000/cuenta_bancaria', data)
+	.success(function(data) {
+		$scope.message = data;
+		alert($scope.message);
+	}); 
+
+
+	$scope.num_cuenta='';
+	$scope.nombre_banco='';
+	$scope.monto_actual='';
+	
+	};
+
+	$scope.getTransacciones = function(){
+        $http.get('http://localhost:8000/transacciones')
+            .success(function(data){
+                $scope.cuentas = data;
+            });
+    };
+    
+    $scope.getTransacciones();
+});
 

@@ -87,14 +87,5 @@ class TransaccionServicesController extends FOSRestController
  	}
 
 
-
-
-
-
-
-
-
-
-
 }
 ?>
