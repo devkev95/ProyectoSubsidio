@@ -1,0 +1,8 @@
+CREATE TRIGGER `actualizar_cuenta` AFTER INSERT ON `transaccion`
+ FOR EACH ROW BEGIN
+
+UPDATE cuentabancaria SET montoActual=(montoActual-new.monto) where numCuenta=new.CuentaBancaria;
+
+
+
+END
