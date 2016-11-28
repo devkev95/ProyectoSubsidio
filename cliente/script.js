@@ -254,21 +254,22 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 
 scotchApp.controller('TransaccionController', function($scope, $http){
 
-    $scope.crearCuenta = function(){	
+    $scope.crearTransaccion = function(){	
     	
-    var data = {"numCuenta":""+$scope.num_cuenta+"","banco": ""+$scope.nombre_banco+"","monto":""+$scope.monto_actual+""};
+    var data = {"tipo":""+$scope.tipo_transaccion+"","proveedor": ""+$scope.proveedor+"","cuenta": ""+$scope.cuenta_bancaria+"","monto":""+$scope.monto+""};
 
 
-    $http.post('http://localhost:8000/cuenta_bancaria', data)
+    $http.post('http://localhost:8000/transacciones', data)
 	.success(function(data) {
 		$scope.message = data;
 		alert($scope.message);
 	}); 
 
 
-	$scope.num_cuenta='';
-	$scope.nombre_banco='';
-	$scope.monto_actual='';
+	$scope.tipo_transaccion='';
+	$scope.proveedor='';
+	$scope.cuenta_bancaria='';
+	$scope.monto='';
 	
 	};
 

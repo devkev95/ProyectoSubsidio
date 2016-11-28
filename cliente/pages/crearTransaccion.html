@@ -1,0 +1,41 @@
+
+<form class="form-horizontal" role="form" ng-submit="crearTransaccion()">
+  <div class="form-group">
+    <label class="col-md-2 control-label">Tipo de transaccion</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="tipo_transaccion"
+        ng-model="tipo_transaccion" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Proveedor</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="proveedor"
+        ng-model="proveedor" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Cuenta bancaria</label>
+    <div class="col-md-4">
+      <input type="text" class="form-control" name="cuenta_bancaria"
+        ng-model="cuenta_bancaria" />
+    </div>
+  </div>
+  <div class="form-group">
+    <label class="col-md-2 control-label">Monto de transaccion</label>
+    <div class="col-md-4">
+      <input type="number" class="form-control" name="monto"
+        ng-model="monto" />
+    </div>
+  </div>
+  
+  <div class="form-group">                
+    <div style="padding-left:110px">
+      <input type="submit" value="Guardar" class="btn btn-primary"/>
+    </div>
+  </div>
+
+</form>
+
+
+
