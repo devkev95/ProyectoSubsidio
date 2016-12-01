@@ -53,29 +53,6 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 	// create the controller and inject Angular's $scope
 	
 
-	scotchApp.controller('UserController', function($scope, $http) {
-
-
-    $scope.addUsuario = function(){	
-   	
-    var data = {"email":""+$scope.email+"","password": ""+$scope.password+"","nombres":""+$scope.nombres+"", "apellidos":""+$scope.apellidos+"","activo":""+$scope.activo+"", "rol":""+$scope.rol+""};
-
-    $http.post('http://localhost:8000/usuario', data)
-	.success(function(data) {
-		$scope.message = data;
-	}); 
-
-
-	$scope.email='';
-	$scope.password='';
-	$scope.nombres='';
-	$scope.apellidos='';
-	$scope.activo='';
-	$scope.rol='';
-   
-	
-	};
-});
 
 /*global define */
 
@@ -189,8 +166,11 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
     $http.post('http://localhost:8000/login', data)
     .success(function(data, status, headers, config){
     	$scope.message= data;
-    	  token = data.token;
-    	 alert(token);
+    	  localStorage.token = data.token;
+    	  nombre = data.nombre;
+    	  rol = data.rol;
+    	 alert('Nombre de Usuario: '+nombre+'Rol del Usuario:'+rol);
+
     	 window.location="#/home";
     });
 
@@ -198,15 +178,24 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 	$scope.password='';
 
 	};
+
 });
 
+scotchApp.controller('homeController', function($scope, $http) {
+
+	$scope.logout = function(){
+		 localStorage.token = 0;
+		window.location="#/";
+	};
+
+});
 
 	scotchApp.controller('UsuarioController', function($scope, $http) {
 
 	$scope.getUsuarios = function(){
 
-		var config = {headers: {
-			'Authorization': 'Bearer'+token,
+		var config = { headers: {
+			'Authorization': 'Bearer '+localStorage.token,
 			 'Content-Type': 'application/json'
 			}
 		};
@@ -220,6 +209,38 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
     $scope.getUsuarios();
 });
 
+
+
+	scotchApp.controller('UserController', function($scope, $http) {
+
+
+    $scope.addUsuario = function(){	
+   	
+    var data = {"email":""+$scope.email+"","password": ""+$scope.password+"","nombres":""+$scope.nombres+"", "apellidos":""+$scope.apellidos+"","activo":""+$scope.activo+"", "rol":""+$scope.rol+""};
+
+    var config = { headers: {
+			'Authorization': 'Bearer '+localStorage.token,
+			 'Content-Type': 'application/json'
+			}
+		};
+
+    $http.post('http://localhost:8000/usuario', data, config)
+	.success(function(data) {
+		$scope.message = data;
+		alert($scope.message);
+	}); 
+
+
+	$scope.email='';
+	$scope.password='';
+	$scope.nombres='';
+	$scope.apellidos='';
+	$scope.activo='';
+	$scope.rol='';
+   
+	
+	};
+});
 
 	scotchApp.controller('CuentaController', function($scope, $http){
 

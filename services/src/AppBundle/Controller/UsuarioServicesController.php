@@ -48,6 +48,7 @@ class UsuarioServicesController extends FOSRestController{
 
     /**
     * @Rest\Post("/usuario")
+    * @Security("has_role('ROLE_ADMIN')")
     */
     public function createAction(Request $request)
     {
@@ -69,9 +70,9 @@ class UsuarioServicesController extends FOSRestController{
 
             return new Response('Se creo el Usuario con Email: '.$usuario->getEmail());
         } catch (\Doctrine\DBAL\Exception\UniqueConstraintViolationException $e){
-            return $this->view(array('response' => 'Usuario ya existente. Por favor intente con otro'), 400);   
+            return  $this->view(array('response' => 'Usuario ya existente. Por favor intente con otro'), 400);   
         } catch (\Exception $e){
-            return $this->view(array('response' => 'Ha sucedido un error en la base de datos. Por favor intente más tarde'), 400); 
+            return  $this->view(array('response' => 'Ha sucedido un error en la base de datos. Por favor intente más tarde'), 400); 
         }
     }
 
