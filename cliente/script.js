@@ -46,6 +46,14 @@ var scotchApp = angular.module('scotchApp', ['ngRoute']);
 			.when('/transaccion', {
 				templateUrl : 'pages/crearTransaccion.html',
 				controller  : 'TransaccionController'
+			})
+			.when('/abonos', {
+				templateUrl : 'pages/abonos.html',
+				controller  : 'AbonoController'
+			})
+			.when('/abono', {
+				templateUrl : 'pages/crearabono.html',
+				controller  : 'AbonoController'
 			});
 
 	});
@@ -302,5 +310,33 @@ scotchApp.controller('TransaccionController', function($scope, $http){
     };
     
     $scope.getTransacciones();
+});
+
+scotchApp.controller('AbonoController', function($scope, $http){
+
+    $scope.crearAbono = function(){	
+    	
+    var data = {"cuenta": ""+$scope.cuenta_bancaria+"","monto":""+$scope.monto_abono+""};
+
+
+    $http.post('http://localhost:8000/abonos', data)
+	.success(function(data) {
+		$scope.message = data;
+		alert($scope.message);
+	}); 
+
+	$scope.cuenta_bancaria='';
+	$scope.monto_abono='';
+	
+	};
+
+	$scope.getAbonos = function(){
+        $http.get('http://localhost:8000/abonos')
+            .success(function(data){
+                $scope.abonos = data;
+            });
+    };
+    
+    $scope.getAbonos();
 });
 
